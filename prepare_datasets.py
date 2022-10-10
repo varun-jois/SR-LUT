@@ -2,7 +2,7 @@ import os
 import cv2 as cv
 from glob import glob
 
-VID_PATH = '/home/varun/PhD/datasets/VoxCeleb2/vox2_test_mp4/mp4'
+VID_PATH = '/home/varun/fvc/datasets/vox2_test_mp4'  # '/home/varun/PhD/datasets/VoxCeleb2/vox2_test_mp4/mp4'
 
 
 # iterate through all the ids, videos and utterances
