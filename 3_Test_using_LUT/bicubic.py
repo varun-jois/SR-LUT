@@ -9,7 +9,7 @@ import sys
 sys.path.insert(1, '../1_Train_deep_model')
 from utils import PSNR, _rgb2ycbcr
 
-out_path = '~/fvc/SR-LUT/3_Test_using_LUT/test'
+out_path = '/home/varun/fvc/SR-LUT/3_Test_using_LUT/test'
 
 files_lr = glob(out_path + '/LR_x{}/*.png'.format(4))
 files_lr.sort()
