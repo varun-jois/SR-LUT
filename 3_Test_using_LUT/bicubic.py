@@ -29,7 +29,7 @@ for ti, fn in enumerate(files_gt):
 
     # bicubic upsampling
     img_out = cv.resize(img_lr, (0, 0), fx=4, fy=4, interpolation=cv.INTER_CUBIC)
-    cv.imwrite(f'~/fvc/SR-LUT/3_Test_using_LUT/output_bicubic/{name}', img_out[...,::-1])
+    cv.imwrite(f'/home/varun/fvc/SR-LUT/3_Test_using_LUT/output_bicubic/{name}', img_out[...,::-1])
 
     CROP_S = 4
     psnr = PSNR(_rgb2ycbcr(img_gt)[:, :, 0], _rgb2ycbcr(img_out)[:, :, 0], CROP_S)
