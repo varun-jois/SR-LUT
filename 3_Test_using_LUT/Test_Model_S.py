@@ -6,7 +6,7 @@ from os.path import isfile, join, isdir
 from tqdm import tqdm
 import glob
 from tqdm import tqdm
-
+import cv2 as cv
 
 import sys
 sys.path.insert(1, '../1_Train_deep_model')
@@ -18,7 +18,7 @@ from utils import PSNR, _rgb2ycbcr
 UPSCALE = 4     # upscaling factor
 SAMPLING_INTERVAL = 4        # N bit uniform sampling
 LUT_PATH = "Model_S_x{}_{}bit_int8.npy".format(UPSCALE, SAMPLING_INTERVAL)    # Trained SR net params
-TEST_DIR = './test/'      # Test images
+TEST_DIR = '/home/varun/fvc/SR-LUT/1_Train_deep_model/val'      # Test images  './test/'
 
 
 
@@ -28,7 +28,8 @@ LUT = np.load(LUT_PATH).astype(np.float32).reshape(-1, UPSCALE*UPSCALE)  # N(=(2
 
 
 # Test LR images
-files_lr = glob.glob(TEST_DIR + '/LR_x{}/*.png'.format(UPSCALE))
+# files_lr = glob.glob(TEST_DIR + '/LR_x{}/*.png'.format(UPSCALE))
+files_lr = glob.glob(TEST_DIR + '/LR/*.png'.format(UPSCALE))
 files_lr.sort()
 
 # Test GT images
@@ -37,6 +38,7 @@ files_gt.sort()
 
 
 psnrs = []
+bicubic = []
 
 if not isdir('./output_S_x{}_{}bit'.format(UPSCALE, SAMPLING_INTERVAL)):
     mkdir('./output_S_x{}_{}bit'.format(UPSCALE, SAMPLING_INTERVAL))
@@ -201,11 +203,18 @@ for ti, fn in enumerate(tqdm(files_gt)):
         img_out = np.pad(img_out, ((0,0),(0,img_gt.shape[1]-img_out.shape[1]),(0,0)))
 
     # Save to file
-    Image.fromarray(img_out).save('./output_S_x{}_{}bit/{}_LUT_interp_{}bit.png'.format(UPSCALE, SAMPLING_INTERVAL, fn.split('/')[-1][:-4], SAMPLING_INTERVAL))
+    # Image.fromarray(img_out).save('./output_S_x{}_{}bit/{}_LUT_interp_{}bit.png'.format(UPSCALE, SAMPLING_INTERVAL, fn.split('/')[-1][:-4], SAMPLING_INTERVAL))
 
     CROP_S = 4
     psnr = PSNR(_rgb2ycbcr(img_gt)[:,:,0], _rgb2ycbcr(img_out)[:,:,0], CROP_S)
     psnrs.append(psnr)
 
-print('AVG PSNR: {}'.format(np.mean(np.asarray(psnrs))))
+    # get bicubic output
+    img_lr = img_lr.astype(np.uint8)
+    img_bc = cv.resize(img_lr, (0, 0), fx=4, fy=4, interpolation=cv.INTER_CUBIC)
+    bic = PSNR(_rgb2ycbcr(img_gt)[:,:,0], _rgb2ycbcr(img_bc)[:,:,0], CROP_S)
+    bicubic.append(bic)
+
+print('AVG PSNR LUT: {}'.format(np.mean(np.asarray(psnrs))))
+print('AVG PSNR bicubic: {}'.format(np.mean(np.asarray(bicubic))))
 
