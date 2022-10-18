@@ -17,7 +17,7 @@ from utils import PSNR, _rgb2ycbcr
 # USER PARAMS
 UPSCALE = 4     # upscaling factor
 SAMPLING_INTERVAL = 4        # N bit uniform sampling
-LUT_PATH = "Model_S_x{}_{}bit_int8.npy".format(UPSCALE, SAMPLING_INTERVAL)    # Trained SR net params
+LUT_PATH = '/home/varun/fvc/SR-LUT/2_Transfer_to_LUT/Model_S_faces.npy'  # Trained SR net params
 TEST_DIR = '/home/varun/fvc/SR-LUT/1_Train_deep_model/val'      # Test images  './test/'
 
 

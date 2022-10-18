@@ -10,6 +10,7 @@ import numpy as np
 UPSCALE = 4                  # upscaling factor
 MODEL_PATH = '/home/varun/fvc/SR-LUT/1_Train_deep_model/checkpoint/S/model_G_i199000.pth'    # Trained SR net params  "./Model_S.pth"
 SAMPLING_INTERVAL = 4        # N bit uniform sampling
+LUT_NAME = 'Model_S_faces'
 
 
 
@@ -110,7 +111,8 @@ with torch.no_grad():
     results = np.concatenate(outputs, 0)
     print("Resulting LUT size: ", results.shape)
 
-    np.save("Model_S_x{}_{}bit_int8".format(UPSCALE, SAMPLING_INTERVAL), results)
+    # np.save("Model_S_x{}_{}bit_int8".format(UPSCALE, SAMPLING_INTERVAL), results)
+    np.save(LUT_NAME, results)
 
 
 
