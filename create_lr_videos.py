@@ -12,6 +12,8 @@ for n, iu in enumerate(glob.iglob(f'{root_hr}/*/*/*')):
     if not os.path.exists(vpath):
         os.makedirs(vpath)
     ou = os.path.join(vpath, utt)
-    # create the video using ffmpeg
-    os.system(f'ffmpeg -i {iu} -vf scale=w=iw/4:h=ih/4 -c:v libx264 -preset veryfast {ou}')
+    # check to see if the utt has been created
+    if not os.path.exists(ou):
+        # create the video using ffmpeg
+        os.system(f'ffmpeg -i {iu} -vf scale=w=iw/4:h=ih/4 -c:v libx264 -preset veryfast {ou}')
     print(f'{n} done')
