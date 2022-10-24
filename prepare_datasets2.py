@@ -2,7 +2,7 @@ import os
 import cv2 as cv
 from glob import glob
 
-VID_PATH = '/home/varun/fvc/datasets/vox2_test_mp4'  # '/home/varun/PhD/datasets/VoxCeleb2/vox2_test_mp4/mp4'
+VID_PATH = '/home/varun/fvc/datasets/vox2_test_mp4_lr_x4'  # '/home/varun/PhD/datasets/VoxCeleb2/vox2_test_mp4/mp4'
 
 
 # iterate through all the ids, videos and utterances
@@ -11,10 +11,8 @@ utt_count = 0
 for idpath in sorted(glob(f'{VID_PATH}/*')):
     id = os.path.basename(idpath)
     if id in ['id08911', 'id04119', 'id07354']:  # val ids
-        hrpath = '1_Train_deep_model/val/HR'
         lrpath = '1_Train_deep_model/val/LR'
     else:
-        hrpath = '1_Train_deep_model/train/DIV2K_train_HR'
         lrpath = '1_Train_deep_model/train/DIV2K_train_LR_bicubic/X4'
     for vpath in sorted(glob(f'{VID_PATH}/{id}/*')):
         vid = os.path.basename(vpath)
@@ -29,10 +27,7 @@ for idpath in sorted(glob(f'{VID_PATH}/*')):
                 if ret:
                     if fc == 10:  # only taking one frame, the tenth frame
                         name = f'{id}_{vid}_{utt}_{fc}'
-                        # write the HR image
-                        cv.imwrite(f'{hrpath}/{name}_GT.png', frame)
-                        # get the LR image and write
-                        frame = cv.resize(frame, (0, 0), fx=1 / 4, fy=1 / 4, interpolation=cv.INTER_CUBIC)
+                        # write the LR image
                         cv.imwrite(f'{lrpath}/{name}.png', frame)
                         # update counters
                         frame_count += 1
@@ -45,5 +40,3 @@ for idpath in sorted(glob(f'{VID_PATH}/*')):
             cap.release()
             cv.destroyAllWindows()
         print(f'{id}_{vid} done. Total utts: {utt_count} Total frames: {frame_count}')
-
-
