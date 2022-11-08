@@ -3,7 +3,7 @@ import cv2 as cv
 from lut_sr import sr
 
 IDS_PATH = '/home/varun/fvc/datasets/vox2_test_mp4_lr_x4'
-LUT_PATH = '/home/varun/fvc/SR-LUT/2_Transfer_to_LUT/Model_S_x4_4bit_int8.npy'
+LUT_PATH = '/home/varun/fvc/SR-LUT/2_Transfer_to_LUT/LUTs/Model_S_x4_4bit_int8.npy'
 # IDS_PATH = '/home/varun/PhD/datasets/VoxCeleb2/vox2_test_mp4/mp4'  # '/home/varun/fvc/datasets/vox2_test_mp4'
 # LUT_PATH = '/home/varun/PhD/Face Video Compression/SR-LUT/3_Test_using_LUT/Model_S_faces.npy'  #  '/home/varun/PhD/Face Video Compression/SR-LUT/3_Test_using_LUT/Model_S_faces.npy'
 UTT_NAMES = ['id04119_1uH67UruKlE_00002_10', 'id07354_iUUpvrP-gzQ_00348_10', 'id08911_8QeBl-d07ik_00039_10']
