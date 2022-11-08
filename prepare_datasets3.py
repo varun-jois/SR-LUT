@@ -32,8 +32,10 @@ for i, fpath in enumerate([lrvid, hrvid]):
             # write the image
             if i == 0:
                 cv.imwrite(f'{lrpath}/{fc}.png', frame)
+                print(f'saving {fc} for lr')
             else:
                 cv.imwrite(f'{hrpath}/{fc}_GT.png', frame)
+                print(f'saving {fc} for hr')
             # update counters
             fc += 1
         else:
