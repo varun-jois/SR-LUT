@@ -25,15 +25,15 @@ EXP_NAME = "SR-LUT"
 VERSION = "S"
 UPSCALE = 4     # upscaling factor
 
-NB_BATCH = 256        # mini-batch
+NB_BATCH = 32        # mini-batch
 CROP_SIZE = 48       # input LR training patch size
 
 START_ITER = 200000      # Set 0 for from scratch, else will load saved params and trains further
-NB_ITER = 1    # Total number of training iterations
+NB_ITER = 8    # Total number of training iterations
 
 I_DISPLAY = 100     # display info every N iteration
 I_VALIDATION = 1000  # validate every N iteration
-I_SAVE = 1       # save models every N iteration
+I_SAVE = 8       # save models every N iteration
 
 TRAIN_DIR = f'1_Train_deep_model/overfit/{id}'  # Training images: png files should just locate in the directory (eg ./train/img0001.png ... ./train/img0800.png)
 VAL_DIR = './val/'      # Validation images
