@@ -35,7 +35,7 @@ I_DISPLAY = 100     # display info every N iteration
 I_VALIDATION = 1000  # validate every N iteration
 I_SAVE = 8       # save models every N iteration
 
-TRAIN_DIR = f'1_Train_deep_model/overfit/{id}'  # Training images: png files should just locate in the directory (eg ./train/img0001.png ... ./train/img0800.png)
+TRAIN_DIR = f'./1_Train_deep_model/overfit/{id}'  # Training images: png files should just locate in the directory (eg ./train/img0001.png ... ./train/img0800.png)
 VAL_DIR = './val/'      # Validation images
 
 LR_G = 1e-4         # Learning rate for the generator
