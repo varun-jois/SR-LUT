@@ -1,5 +1,5 @@
 import importlib
-import os
+from os.path import join
 
 import numpy as np
 import cv2 as cv
@@ -70,30 +70,51 @@ from PIL import Image
 # test_ids = ['id08911', 'id04119', 'id07354']
 #
 
-VID_PATH = '/home/varun/fvc/datasets/vox2_test_mp4_lr_x4'
-lrpath = '1_Train_deep_model/train/DIV2K_train_LR_bicubic/X4'
-fs = ['id04295_JPMZAOGGHh8_00073', 'id04295_pF1eg2ltAIk_00212', 'id04295_rBoL5RHpTx0_00217']
-for f in fs:
-    id, vid, utt = f.split('_')
-    uttpath = f'{VID_PATH}/{id}/{vid}/{utt}.mp4'
-    # go through the video
-    cap = cv.VideoCapture(uttpath)
-    fc = 0
+import sys
+sys.path.insert(1, '3_Test_using_LUT')
+from lut_sr import sr
+
+IDS_PATH = '/home/varun/PhD/Face Video Compression/SR-LUT/3_Test_using_LUT/vids/exp_2'
+LUT_PATH = '/home/varun/PhD/Face Video Compression/SR-LUT/2_Transfer_to_LUT/LUTs/Model_S_faces_h264.npy'
+# IDS_PATH = '/home/varun/PhD/datasets/VoxCeleb2/vox2_test_mp4/mp4'  # '/home/varun/fvc/datasets/vox2_test_mp4'
+# LUT_PATH = '/home/varun/PhD/Face Video Compression/SR-LUT/3_Test_using_LUT/Model_S_faces.npy'  #  '/home/varun/PhD/Face Video Compression/SR-LUT/3_Test_using_LUT/Model_S_faces.npy'
+UTT_NAMES = ['id04119_1uH67UruKlE_00002', 'id07354_iUUpvrP-gzQ_00348', 'id08911_8QeBl-d07ik_00039']
+OUT_PATH = IDS_PATH
+
+for i, utt_name in enumerate(UTT_NAMES, 1):
+    upath = join(IDS_PATH, f'{utt_name}_lut.mp4')
+
+    # video file to read
+    cap = cv.VideoCapture(upath)
+    f = 1
+
+    # video files for the output
+    fourcc = cv.VideoWriter_fourcc(*'mp4v')  # mp4v
+    # movie_bic = cv.VideoWriter(join(OUT_PATH, f'{id}_{vid}_{utt}_bic.mp4'), fourcc, 25, (224, 224))
+    movie_lut = cv.VideoWriter(join(OUT_PATH, f'{utt_name}_lut16.mp4'), fourcc, 25, (896, 896))
     while True:
         # Capture frame-by-frame
-        ret, frame = cap.read()
+        ret, lr = cap.read()
         if ret:
-            if fc == 10:  # only taking one frame, the tenth frame
-                name = f'{id}_{vid}_{utt}_{fc}'
-                # write the LR image
-                cv.imwrite(f'{lrpath}/{name}.png', frame)
-                break
-            fc += 1
+            # get the LR image
+            # lr = cv.resize(frame, (0, 0), fx=1 / 4, fy=1 / 4, interpolation=cv.INTER_CUBIC)
+            # movie_lr.write(lr)
+            # get bicubic upsampling
+            # sr_bic = cv.resize(lr, (0, 0), fx=4, fy=4, interpolation=cv.INTER_CUBIC)
+            # # sr_bic = cv.resize(sr_bic, (0, 0), fx=4, fy=4, interpolation=cv.INTER_CUBIC)
+            # movie_bic.write(sr_bic)
+            # get lut output
+            sr_lut = sr(lr[..., ::-1], LUT_PATH)
+            # sr_lut = sr(sr_lut[..., ::-1], LUT_PATH)
+            movie_lut.write(sr_lut)
+            print(f'{f} frames done')
+            f += 1
         else:
             break
     # When everything done, release the capture
     cap.release()
+    # movie_bic.release()
+    movie_lut.release()
     cv.destroyAllWindows()
 
-
-
+    print(f'{i} of {len(UTT_NAMES)} done')
