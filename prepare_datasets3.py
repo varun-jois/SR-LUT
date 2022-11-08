@@ -23,11 +23,13 @@ if not os.path.exists(hrpath):
 
 # go through the video
 for i, fpath in enumerate([lrvid, hrvid]):
+    print(fpath)
     cap = cv.VideoCapture(fpath)
     fc = 0
     while True:
         # Capture frame-by-frame
         ret, frame = cap.read()
+        print(ret)
         if ret:
             # write the image
             if i == 0:
