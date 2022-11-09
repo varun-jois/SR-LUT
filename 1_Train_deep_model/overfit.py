@@ -33,7 +33,7 @@ NB_ITER = 1    # Total number of training iterations
 
 I_DISPLAY = 100     # display info every N iteration
 I_VALIDATION = 1000  # validate every N iteration
-I_SAVE = 8       # save models every N iteration
+I_SAVE = 1       # save models every N iteration
 
 TRAIN_DIR = f'./overfit/{id}'  # Training images: png files should just locate in the directory (eg ./train/img0001.png ... ./train/img0800.png)
 VAL_DIR = './val/'      # Validation images
