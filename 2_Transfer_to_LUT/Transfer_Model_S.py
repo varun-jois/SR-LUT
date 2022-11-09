@@ -8,9 +8,9 @@ import numpy as np
 
 # USER PARAMS
 UPSCALE = 4                  # upscaling factor
-MODEL_PATH = '/home/varun/fvc/SR-LUT/1_Train_deep_model/checkpoint/S/model_G_i200000.pth'    # Trained SR net params  "./Model_S.pth"
+MODEL_PATH = '/home/varun/fvc/SR-LUT/1_Train_deep_model/checkpoint/id04119/model_G_i1.pth'    # Trained SR net params  "./Model_S.pth"
 SAMPLING_INTERVAL = 4        # N bit uniform sampling
-LUT_NAME = 'Model_S_faces_h264'
+LUT_NAME = './LUTs/Model_S_id04119'
 
 
 
