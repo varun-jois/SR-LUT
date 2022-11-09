@@ -6,7 +6,7 @@ import os
 import cv2 as cv
 
 # video for overfitting
-id, vid, utt = 'id07354', 'iUUpvrP-gzQ', '00347'
+id, vid, utt = 'id08911', '8QeBl-d07ik', '00040'
 
 # where I store the images for overfitting
 lrvid = f'/home/varun/fvc/datasets/vox2_test_mp4_lr_x4/{id}/{vid}/{utt}.mp4'
