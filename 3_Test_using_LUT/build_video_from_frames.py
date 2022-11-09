@@ -7,7 +7,7 @@ LUT_PATH = '/home/varun/fvc/SR-LUT/2_Transfer_to_LUT/LUTs/Model_S_id04119.npy'
 # IDS_PATH = '/home/varun/PhD/datasets/VoxCeleb2/vox2_test_mp4/mp4'  # '/home/varun/fvc/datasets/vox2_test_mp4'
 # LUT_PATH = '/home/varun/PhD/Face Video Compression/SR-LUT/3_Test_using_LUT/Model_S_faces.npy'  #  '/home/varun/PhD/Face Video Compression/SR-LUT/3_Test_using_LUT/Model_S_faces.npy'
 # UTT_NAMES = ['id04119_1uH67UruKlE_00002_10', 'id07354_iUUpvrP-gzQ_00348_10', 'id08911_8QeBl-d07ik_00039_10']
-UTT_NAMES = ['id04119_1uH67UruKlE_00002_10']
+UTT_NAMES = ['id07354_iUUpvrP-gzQ_00348_10']
 OUT_PATH = 'vids'
 
 for i, utt_name in enumerate(UTT_NAMES, 1):

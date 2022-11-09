@@ -2,15 +2,16 @@ import cv2 as cv
 import numpy as np
 from os.path import join
 
-UTT_NAMES = ['id04119_1uH67UruKlE_00002', 'id07354_iUUpvrP-gzQ_00348', 'id08911_8QeBl-d07ik_00039']
-FPATH = '/home/varun/PhD/Face Video Compression/SR-LUT/exps/exp_3'
-EXTS = ['_flut', '_olut'] #['_bic', '_lut', '_h264']
+#UTT_NAMES = ['id04119_1uH67UruKlE_00002', 'id07354_iUUpvrP-gzQ_00348', 'id08911_8QeBl-d07ik_00039']
+UTT_NAMES = ['id04119_1uH67UruKlE_00002']
+FPATH = '/home/varun/PhD/Face Video Compression/SR-LUT/exps/exp_4'
+EXTS = ['_lut', '_ovf'] #['_bic', '_lut', '_h264']
 
 for i, utt_name in enumerate(UTT_NAMES, 1):
     id, vid, utt = utt_name.split('_')
     #path_b = join(FPATH, f'{utt_name}_bic.mp4')
-    path_l = join(FPATH, f'{utt_name}_flut.mp4')
-    path_h = join(FPATH, f'{utt_name}_olut.mp4')
+    path_l = join(FPATH, f'{utt_name}_lut.mp4')
+    path_h = join(FPATH, f'{utt_name}_ovf.mp4')
 
     # video file to read
     #cap_b = cv.VideoCapture(path_b)
@@ -20,7 +21,7 @@ for i, utt_name in enumerate(UTT_NAMES, 1):
     # video files for the output
     fourcc = cv.VideoWriter_fourcc(*'mp4v')  # mp4v
     #movie = cv.VideoWriter(join(FPATH, f'{utt}_fo.mp4'), fourcc, 25, (672, 224))
-    movie = cv.VideoWriter(join(FPATH, f'{utt}_fo.mp4'), fourcc, 25, (448, 224))
+    movie = cv.VideoWriter(join(FPATH, f'{utt}_lutovf.mp4'), fourcc, 25, (448, 224))
     while True:
         # Capture frame-by-frame
         #ret_b, f_b = cap_b.read()

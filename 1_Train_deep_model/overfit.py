@@ -19,7 +19,7 @@ from tensorboardX import SummaryWriter
 
 
 ### USER PARAMS ###
-id = 'id04119'
+id = 'id07354'
 
 EXP_NAME = "SR-LUT"
 VERSION = "S"
