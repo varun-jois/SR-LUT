@@ -3,7 +3,7 @@ import numpy as np
 from os.path import join
 
 #UTT_NAMES = ['id04119_1uH67UruKlE_00002', 'id07354_iUUpvrP-gzQ_00348', 'id08911_8QeBl-d07ik_00039']
-UTT_NAMES = ['id07354_iUUpvrP-gzQ_00348']
+UTT_NAMES = ['id08911_8QeBl-d07ik_00039']
 FPATH = '/home/varun/PhD/Face Video Compression/SR-LUT/exps/exp_4'
 EXTS = ['_lut', '_ovf'] #['_bic', '_lut', '_h264']
 
