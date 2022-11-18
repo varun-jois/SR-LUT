@@ -2,7 +2,7 @@ from os.path import join
 import cv2 as cv
 from lut_sr import sr
 
-id = 'colors'
+id = 'id04119'
 
 IDS_PATH = '/home/varun/fvc/datasets/vox2_test_mp4_lr_x4'
 LUT_PATH = f'/home/varun/fvc/SR-LUT/2_Transfer_to_LUT/LUTs/Model_S_{id}.npy'
