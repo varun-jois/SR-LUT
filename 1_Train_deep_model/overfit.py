@@ -40,8 +40,8 @@ VAL_DIR = './val/'      # Validation images
 
 LR_G = 1e-4         # Learning rate for the generator
 
-#pretrained_model = '/home/varun/fvc/SR-LUT/1_Train_deep_model/checkpoint/S'
-pretrained_model = f'/home/varun/fvc/SR-LUT/1_Train_deep_model/checkpoint/{id}'
+#pretrained_model, iter_name = '/home/varun/fvc/SR-LUT/1_Train_deep_model/checkpoint/S', 0
+pretrained_model, iter_name = f'/home/varun/fvc/SR-LUT/1_Train_deep_model/checkpoint/{id}', START_ITER
 save_model = f'/home/varun/fvc/SR-LUT/1_Train_deep_model/checkpoint/{id}'
 
 ### Tensorboard for monitoring ###
@@ -138,7 +138,7 @@ def SaveCheckpoint(i, best=False):
 
 
 ### TRAINING
-for i in tqdm(range(1, NB_ITER + 1)):
+for i in tqdm(range(iter_name + 1, NB_ITER + 1)):
 
     model_G.train()
 
