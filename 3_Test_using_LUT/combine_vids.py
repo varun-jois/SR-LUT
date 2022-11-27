@@ -4,14 +4,14 @@ from os.path import join
 
 #UTT_NAMES = ['id04119_1uH67UruKlE_00002', 'id07354_iUUpvrP-gzQ_00348', 'id08911_8QeBl-d07ik_00039']
 UTT_NAMES = ['id04119_1uH67UruKlE_00002']
-FPATH = '/home/varun/PhD/Face Video Compression/SR-LUT/exps/exp_5'
-EXTS = ['_col', '_ovf'] #['_bic', '_lut', '_h264']
+FPATH = '/home/varun/PhD/Face Video Compression/SR-LUT/exps/exp_6'
 
 for i, utt_name in enumerate(UTT_NAMES, 1):
     id, vid, utt = utt_name.split('_')
     #path_b = join(FPATH, f'{utt_name}_bic.mp4')
-    path_l = join(FPATH, f'{utt_name}_col.mp4')
-    path_h = join(FPATH, f'{utt_name}_ovf.mp4')
+    # the output from just the faces trained lut
+    path_l = join('/home/varun/PhD/Face Video Compression/SR-LUT/exps/exp_4', f'{utt_name}_lut.mp4')
+    path_h = join(FPATH, f'{utt_name}_lut.mp4')  # this is the output from the new exp
 
     # video file to read
     #cap_b = cv.VideoCapture(path_b)
@@ -21,7 +21,7 @@ for i, utt_name in enumerate(UTT_NAMES, 1):
     # video files for the output
     fourcc = cv.VideoWriter_fourcc(*'mp4v')  # mp4v
     #movie = cv.VideoWriter(join(FPATH, f'{utt}_fo.mp4'), fourcc, 25, (672, 224))
-    movie = cv.VideoWriter(join(FPATH, f'{utt}_colovf.mp4'), fourcc, 25, (448, 224))
+    movie = cv.VideoWriter(join(FPATH, f'{utt}_lutovf.mp4'), fourcc, 25, (448, 224))
     while True:
         # Capture frame-by-frame
         #ret_b, f_b = cap_b.read()

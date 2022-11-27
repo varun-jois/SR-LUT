@@ -28,19 +28,20 @@ UPSCALE = 4     # upscaling factor
 NB_BATCH = 256        # mini-batch
 CROP_SIZE = 48       # input LR training patch size
 
-START_ITER = 200000      # Set 0 for from scratch, else will load saved params and trains further
+START_ITER = 1000      # Set 0 for from scratch, else will load saved params and trains further
 NB_ITER = 1000    # Total number of training iterations
 
 I_DISPLAY = 100     # display info every N iteration
 I_VALIDATION = 100000000  # validate every N iteration
-I_SAVE = 500       # save models every N iteration
+I_SAVE = 1000       # save models every N iteration
 
 TRAIN_DIR = f'./overfit/{id}'  # Training images: png files should just locate in the directory (eg ./train/img0001.png ... ./train/img0800.png)
 VAL_DIR = './val/'      # Validation images
 
 LR_G = 1e-4         # Learning rate for the generator
 
-pretrained_model = '/home/varun/fvc/SR-LUT/1_Train_deep_model/checkpoint/S'
+#pretrained_model = '/home/varun/fvc/SR-LUT/1_Train_deep_model/checkpoint/S'
+pretrained_model = f'/home/varun/fvc/SR-LUT/1_Train_deep_model/checkpoint/{id}'
 save_model = f'/home/varun/fvc/SR-LUT/1_Train_deep_model/checkpoint/{id}'
 
 ### Tensorboard for monitoring ###
@@ -98,10 +99,10 @@ params_G = list(filter(lambda p: p.requires_grad, model_G.parameters()))
 opt_G = optim.Adam(params_G, lr=LR_G)
 
 ## Load saved params
-lm = torch.load(f'{pretrained_model}/model_G_i{START_ITER:06d}.pth')
+lm = torch.load(f'{pretrained_model}/model_G_i{START_ITER}.pth')
 model_G.load_state_dict(lm.state_dict(), strict=True)
 
-lm = torch.load(f'{pretrained_model}/opt_G_i{START_ITER:06d}.pth')
+lm = torch.load(f'{pretrained_model}/opt_G_i{START_ITER}.pth')
 opt_G.load_state_dict(lm.state_dict())
 
 # Training dataset
