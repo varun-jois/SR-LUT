@@ -4,7 +4,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import numpy as np
 
-id = 'id04119'
+id = 'colors'  # colors, id04119
 
 # USER PARAMS
 UPSCALE = 4                  # upscaling factor

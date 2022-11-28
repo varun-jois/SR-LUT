@@ -19,7 +19,7 @@ from tensorboardX import SummaryWriter
 
 
 ### USER PARAMS ###
-id = 'id04119'
+id = 'colors'  #  id04119, colors
 
 EXP_NAME = "SR-LUT"
 VERSION = "S"
@@ -28,8 +28,8 @@ UPSCALE = 4     # upscaling factor
 NB_BATCH = 256        # mini-batch
 CROP_SIZE = 48       # input LR training patch size
 
-START_ITER = 1000      # Set 0 for from scratch, else will load saved params and trains further
-NB_ITER = 1000    # Total number of training iterations
+START_ITER = 200000      # Set 0 for from scratch, else will load saved params and trains further
+NB_ITER = 2000    # Total number of training iterations
 
 I_DISPLAY = 100     # display info every N iteration
 I_VALIDATION = 100000000  # validate every N iteration
@@ -40,8 +40,8 @@ VAL_DIR = './val/'      # Validation images
 
 LR_G = 1e-4         # Learning rate for the generator
 
-#pretrained_model, iter_name = '/home/varun/fvc/SR-LUT/1_Train_deep_model/checkpoint/S', 0
-pretrained_model, iter_name = f'/home/varun/fvc/SR-LUT/1_Train_deep_model/checkpoint/{id}', START_ITER
+pretrained_model, iter_name = '/home/varun/fvc/SR-LUT/1_Train_deep_model/checkpoint/S', 0
+#pretrained_model, iter_name = f'/home/varun/fvc/SR-LUT/1_Train_deep_model/checkpoint/{id}', START_ITER
 save_model = f'/home/varun/fvc/SR-LUT/1_Train_deep_model/checkpoint/{id}'
 
 ### Tensorboard for monitoring ###
