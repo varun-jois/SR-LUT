@@ -12,7 +12,7 @@ import sys
 sys.path.insert(1, '../1_Train_deep_model')
 from utils import PSNR, _rgb2ycbcr
 
-id = 'colors'  # colors, id04119
+id = 'id04119'  # colors, id04119
 
 # USER PARAMS
 UPSCALE = 4     # upscaling factor
