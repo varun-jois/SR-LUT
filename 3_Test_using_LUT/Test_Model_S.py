@@ -13,12 +13,13 @@ sys.path.insert(1, '../1_Train_deep_model')
 from utils import PSNR, _rgb2ycbcr
 
 id = 'colors'  # colors, id04119
+testid = 'id04119'
 
 # USER PARAMS
 UPSCALE = 4     # upscaling factor
 SAMPLING_INTERVAL = 4        # N bit uniform sampling
 LUT_PATH = f'/home/varun/fvc/SR-LUT/2_Transfer_to_LUT/LUTs/Model_S_{id}.npy'  # Trained SR net params
-TEST_DIR = f'/home/varun/fvc/SR-LUT/1_Train_deep_model/overfit/{id}'      # Test images  './test/'
+TEST_DIR = f'/home/varun/fvc/SR-LUT/1_Train_deep_model/overfit/{testid}'      # Test images  './test/'
 
 # Test LR images
 # files_lr = glob.glob(TEST_DIR + '/LR_x{}/*.png'.format(UPSCALE))
