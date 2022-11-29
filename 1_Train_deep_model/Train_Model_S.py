@@ -21,6 +21,8 @@ from tensorboardX import SummaryWriter
 
 
 ### USER PARAMS ###
+losstype = 'perceptual'  # l1, l2, perceptual
+
 EXP_NAME = "SR-LUT"
 VERSION = "S"
 UPSCALE = 4     # upscaling factor
@@ -172,7 +174,12 @@ class PerceptualLoss(nn.Module):
         return loss
 
 
-lossfn = PerceptualLoss(use_input_norm=False).cuda()
+if losstype == 'perceptual':
+    lossfn = PerceptualLoss(use_input_norm=False).cuda()
+elif losstype == 'l1':
+    lossfn = nn.L1Loss().cuda()
+else:
+    lossfn = nn.MSELoss().cuda()
 
 ####################################################################
 

@@ -4,11 +4,11 @@ import torch.nn as nn
 import torch.nn.functional as F
 import numpy as np
 
-id = 'S'  # S, colors, id04119
+id = 'id04119'  # S, colors, id04119
 
 # USER PARAMS
 UPSCALE = 4                  # upscaling factor
-MODEL_PATH = f'/home/varun/fvc/SR-LUT/1_Train_deep_model/checkpoint/{id}/model_G_i080000.pth'    # Trained SR net params  "./Model_S.pth"
+MODEL_PATH = f'/home/varun/fvc/SR-LUT/1_Train_deep_model/checkpoint/{id}/model_G_i100.pth'    # Trained SR net params  "./Model_S.pth"
 SAMPLING_INTERVAL = 4        # N bit uniform sampling
 LUT_NAME = f'./LUTs/Model_S_{id}'
 
