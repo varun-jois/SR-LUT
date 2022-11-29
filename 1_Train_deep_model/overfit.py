@@ -19,7 +19,7 @@ from tensorboardX import SummaryWriter
 
 
 ### USER PARAMS ###
-id = 'colors'  #  id04119, colors
+id = 'id04119'  #  id04119, colors
 
 EXP_NAME = "SR-LUT"
 VERSION = "S"
@@ -29,11 +29,11 @@ NB_BATCH = 256        # mini-batch
 CROP_SIZE = 48       # input LR training patch size
 
 START_ITER = 200000      # Set 0 for from scratch, else will load saved params and trains further
-NB_ITER = 2000    # Total number of training iterations
+NB_ITER = 100    # Total number of training iterations
 
 I_DISPLAY = 100     # display info every N iteration
 I_VALIDATION = 100000000  # validate every N iteration
-I_SAVE = 1000       # save models every N iteration
+I_SAVE = 10       # save models every N iteration
 
 TRAIN_DIR = f'./overfit/{id}'  # Training images: png files should just locate in the directory (eg ./train/img0001.png ... ./train/img0800.png)
 VAL_DIR = './val/'      # Validation images
