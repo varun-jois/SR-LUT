@@ -4,7 +4,7 @@ from os.path import join
 
 #UTT_NAMES = ['id04119_1uH67UruKlE_00002', 'id07354_iUUpvrP-gzQ_00348', 'id08911_8QeBl-d07ik_00039']
 UTT_NAMES = ['id04119_1uH67UruKlE_00002']
-FPATH = '/home/varun/PhD/Face Video Compression/SR-LUT/exps/exp_8'
+FPATH = '/home/varun/PhD/Face Video Compression/SR-LUT/exps/exp_10'
 
 for i, utt_name in enumerate(UTT_NAMES, 1):
     id, vid, utt = utt_name.split('_')

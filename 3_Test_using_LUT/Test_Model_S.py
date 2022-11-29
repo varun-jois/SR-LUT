@@ -32,7 +32,7 @@ files_gt.sort()
 
 # if not isdir('./output_S_x{}_{}bit'.format(UPSCALE, SAMPLING_INTERVAL)):
 #     mkdir('./output_S_x{}_{}bit'.format(UPSCALE, SAMPLING_INTERVAL))
-for lut_type in ['pretrained', 'overfit']:
+for lut_type in ['overfit']:  # 'pretrained',
     psnrs = []
     if lut_type == 'pretrained':
         LUT_PATH = '/home/varun/fvc/SR-LUT/2_Transfer_to_LUT/LUTs/Model_S_faces_h264.npy'
