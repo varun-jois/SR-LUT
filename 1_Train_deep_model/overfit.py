@@ -27,7 +27,7 @@ EXP_NAME = "SR-LUT"
 VERSION = "S"
 UPSCALE = 4     # upscaling factor
 
-NB_BATCH = 256        # mini-batch
+NB_BATCH = 32        # mini-batch
 CROP_SIZE = 48       # input LR training patch size
 
 START_ITER = 80000      # Set 0 for from scratch, else will load saved params and trains further
