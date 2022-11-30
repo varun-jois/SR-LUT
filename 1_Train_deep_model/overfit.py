@@ -20,7 +20,7 @@ from tensorboardX import SummaryWriter
 
 
 ### USER PARAMS ###
-id = 'id04119'  #  id04119, colors
+id = 'id07354'  #  id04119, colors, id07354, id08911
 losstype = 'perceptual'  # l1, l2, perceptual
 
 EXP_NAME = "SR-LUT"
